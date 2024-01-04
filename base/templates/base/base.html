@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body>
+    <navbar class="navbar">
+        <h1>PDF Search Project</h1>
+        <div class="navbar-lists">
+            <a class="navbar-a" href="{% url 'base:upload_pdf' %}">Upload PDFs</a>
+            <a class="navbar-a" href="#">View PDFs</a>
+            <a class="navbar-a" href="#">Update PDF</a>
+            <a class="navbar-a" href="#">Login</a>
+            <a class="navbar-a" href="#">Register</a>
+
+        </div>
+    </navbar>
+    {% block content %}
+    {% endblock content %}
+    <footer class="footer">
+        <h1>Search PDF Project</h1>
+        <ul class="ul-footer">
+            <li class="li-footer">Home</li>
+            <li class="li-footer">About</li>
+            <li class="li-footer">Projects</li>
+            <li class="li-footer">More!</li>
+        </ul>
+    </footer>
+</body>
+</html>
