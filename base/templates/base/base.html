@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/main.css' %}">
 
 </head>
 <body>
@@ -12,8 +14,8 @@
             <a class="navbar-a" href="{% url 'base:upload_pdf' %}">Upload PDFs</a>
             <a class="navbar-a" href="#">View PDFs</a>
             <a class="navbar-a" href="#">Update PDF</a>
-            <a class="navbar-a" href="#">Login</a>
-            <a class="navbar-a" href="#">Register</a>
+            <a class="navbar-a" href="{% url 'users:signin' %}">Sign In</a>
+            <a class="navbar-a" href="{% url 'users:signup' %}">Sign Up</a>
 
         </div>
     </navbar>
