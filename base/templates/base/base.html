@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'base/css/main.css' %}">
+    <script src="https://kit.fontawesome.com/5ab6ea2e2a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/base.css' %}">
 
 </head>
 <body>
@@ -19,15 +20,21 @@
 
         </div>
     </navbar>
-    {% block content %}
-    {% endblock content %}
+    <main class="main">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
     <footer class="footer">
         <h1>Search PDF Project</h1>
         <ul class="ul-footer">
-            <li class="li-footer">Home</li>
-            <li class="li-footer">About</li>
-            <li class="li-footer">Projects</li>
-            <li class="li-footer">More!</li>
+            <a  class="a-footer" href="#">Home</a>
+            <a class="a-footer" href="#">About</a>
+            <a class="a-footer" href="#">Projects</a>
+            <a class="a-footer" href="#">Contact Us</a>
+            <a class="a-footer" href="#">Location</a>
+            <a class="a-footer" href="#">More!</a>
+
         </ul>
     </footer>
 </body>

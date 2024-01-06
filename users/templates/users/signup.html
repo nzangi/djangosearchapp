@@ -1,5 +1,35 @@
 {% extends 'base/base.html' %}
 {% block title %}Sign Up{% endblock title %}
 {% block content %}
-    <h1>Welcome to Sign up page</h1>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/sections/sign_up.css' %}">
+    <div class="container">
+        <div class="form-box">
+            <h1>Sign Up</h1>
+            <form class="form" action="" method="post">
+                {% csrf_token %}
+                <div class="input-data">
+                    <div class="input-filled">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="text" placeholder="Enter your username">
+                    </div>
+                    <div class="input-filled">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="text" placeholder="Enter your E-mail">
+                    </div>
+                    <div class="input-filled">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="text" placeholder="Enter your password">
+                    </div>
+                    <div class="input-filled">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="text" placeholder="Repeat your password">
+                    </div>
+                    <p>You want to sign in,<a href="#"> Click here!</a></p>
+                </div>
+                <div class="button-sign-up">
+                    <button>Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock content %}

@@ -1,6 +1,17 @@
 {% extends 'base/base.html' %}
+{% load static %}
 {% block title %}Upload Document{% endblock title %}
 
 {% block content %}
-    <h1>Welcome to upload document</h1>
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/upload_pdf.css' %}">
+    <div class="container">
+        <h1>Welcome to Upload PDF</h1>
+        <form class="form" action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>Choose a PDF</label><br>
+            <input type="file" id="file" name="file" accept=".pdf">
+            <button class="button">Upload PDF</button>
+        </form>
+    </div>
+
 {% endblock content %}
