@@ -27,6 +27,8 @@ body{
     justify-content: space-evenly;
     padding: 5px 5px;
     width: 70%;
+    transition: 2s;
+
 }
 .navbar-a{
     text-decoration: none;
@@ -39,7 +41,7 @@ body{
     color: black;
     border-radius: 5px;
     font-size: 25px;
-    transition: 0.2s;
+    transition: 2s;
 }
 .main{
     min-height: 75vh;
