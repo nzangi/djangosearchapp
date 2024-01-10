@@ -9,33 +9,40 @@
 
 </head>
 <body>
-    <navbar class="navbar">
-        <h1>PDF Search Project</h1>
-        <div class="navbar-lists">
+<navbar class="navbar">
+    <h1>PDF Search Project</h1>
+    <div class="navbar-lists">
+        {% if user.is_authenticated %}
             <a class="navbar-a" href="{% url 'base:upload_pdf' %}">Upload PDFs</a>
-            <a class="navbar-a" href="#">View PDFs</a>
+            <a class="navbar-a" href="#">View All PDFs</a>
             <a class="navbar-a" href="#">Update PDF</a>
+            <a class="navbar-a" href="{% url 'users:signout' %}">Sign Out</a>
+
+        {% else %}
             <a class="navbar-a" href="{% url 'users:signin' %}">Sign In</a>
             <a class="navbar-a" href="{% url 'users:signup' %}">Sign Up</a>
+        {% endif %}
 
-        </div>
-    </navbar>
-    <main class="main">
-        {% block content %}
-        {% endblock content %}
-    </main>
 
-    <footer class="footer">
-        <h1>Search PDF Project</h1>
-        <ul class="ul-footer">
-            <a  class="a-footer" href="#">Home</a>
-            <a class="a-footer" href="#">About</a>
-            <a class="a-footer" href="#">Projects</a>
-            <a class="a-footer" href="#">Contact Us</a>
-            <a class="a-footer" href="#">Location</a>
-            <a class="a-footer" href="#">More!</a>
 
-        </ul>
-    </footer>
+    </div>
+</navbar>
+<main class="main">
+    {% block content %}
+    {% endblock content %}
+</main>
+
+<footer class="footer">
+    <h1>Search PDF Project</h1>
+    <ul class="ul-footer">
+        <a  class="a-footer" href="#">Home</a>
+        <a class="a-footer" href="#">About</a>
+        <a class="a-footer" href="#">Projects</a>
+        <a class="a-footer" href="#">Contact Us</a>
+        <a class="a-footer" href="#">Location</a>
+        <a class="a-footer" href="#">More!</a>
+
+    </ul>
+</footer>
 </body>
 </html>

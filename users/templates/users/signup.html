@@ -11,21 +11,31 @@
                 <div class="input-data">
                     <div class="input-filled">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Enter your username">
+                        {{ form.username }}
                     </div>
                     <div class="input-filled">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="text" placeholder="Enter your E-mail">
+                        {{ form.email }}
                     </div>
                     <div class="input-filled">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="text" placeholder="Enter your password">
+                        {{ form.password1 }}
                     </div>
                     <div class="input-filled">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="text" placeholder="Repeat your password">
+                        {{ form.password2 }}
                     </div>
                     <p>You want to sign in,<a href="#"> Click here!</a></p>
+
+                    {% if form.errors or form.non_field_errors %}
+                        <div class="error_form">
+                            {% for field in form %}
+                                {{ field.errors }}
+                            {% endfor %}
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
                 </div>
                 <div class="button-sign-up">
                     <button>Sign Up</button>

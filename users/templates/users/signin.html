@@ -3,7 +3,7 @@
 {% block title %}Sign In{% endblock title %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'users/css/sections/sign_up.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/sections/sign_up.css' %}">
     <div class="container">
         <div class="form-box">
             <h1>Sign In</h1>
@@ -12,13 +12,22 @@
                 <div class="input-data">
                     <div class="input-filled">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Enter your username">
+                        {{ form.username }}
                     </div>
                     <div class="input-filled">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="text" placeholder="Enter your password">
+                        {{ form.password }}
                     </div>
+
                     <p>You want to sign up,<a href="#"> Click here!</a></p>
+                    {% if form.errors or form.non_field_errors %}
+                        <div class="error_form">
+                            {% for field in form %}
+                                {{ field.errors }}
+                            {% endfor %}
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="button-sign-up">
                     <button>Sign In</button>

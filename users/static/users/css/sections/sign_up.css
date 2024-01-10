@@ -28,20 +28,22 @@
     width: 90%;
     height: 30px;
     font-size: 25px;
-    padding: 5px 5px;
+    padding: 8px 8px;
     border-radius: 5px;
     outline: none;
     border: none;
  }
 .input-filled i{
-    margin-right: 5px;
-    height: 30px;
+    margin-right: 10px;
+    height: 40px;
+
 }
 .input-data p{
     font-size: 20px;
     font-weight: 600;
     margin-left: 10px;
 }
+
 .input-data p a{
     text-decoration: none;
     color: #9c3705;
@@ -51,7 +53,6 @@
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-
 }
 .button-sign-up button{
     background: #0c0cd5;
@@ -63,4 +64,10 @@
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
+}
+.error_form{
+    margin-bottom: 3px;
+    padding: 6px;
+    background: red;
+    border-radius: 10px;
 }

@@ -1,8 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import SignUpForm
+
 
 # Create your views here.
 def signup(request):
-    return render(request,'users/signup.html')
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("users:signin")
+    else:
+        form = SignUpForm()
 
-def signin(request):
-    return render(request,'users/signin.html')
+    return render(request, 'users/signup.html', {
+        'form': form,
+    })
+
+# def signin(request):
+#     return render(request,'users/signin.html')

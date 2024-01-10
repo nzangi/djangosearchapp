@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% block title %}Sign Out{% endblock title %}
+
+{% block content %}
+    <form method="post" action="{% url 'users:signout' %}">
+        {% csrf_token %}
+        <button type="submit">Sign Out</button>
+    </form>
+{% endblock %}
