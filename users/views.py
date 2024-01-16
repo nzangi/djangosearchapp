@@ -1,3 +1,4 @@
+from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 
@@ -16,5 +17,3 @@ def signup(request):
         'form': form,
     })
 
-# def signin(request):
-#     return render(request,'users/signin.html')
