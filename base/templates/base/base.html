@@ -16,7 +16,7 @@
             <a class="navbar-a" href="{% url 'base:upload_pdf' %}">Upload PDFs</a>
             <a class="navbar-a" href="#">View All PDFs</a>
             <a class="navbar-a" href="#">Update PDF</a>
-            <a class="navbar-a" href="{% url 'users:signout' %}">Sign Out</a>
+            <a class="navbar-a" href="{% url 'users:logout' %}">Sign Out</a>
 
         {% else %}
             <a class="navbar-a" href="{% url 'users:signin' %}">Sign In</a>
