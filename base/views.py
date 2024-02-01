@@ -9,3 +9,7 @@ from django.shortcuts import render, redirect
 @login_required
 def upload_pdf(request):
     return render(request, 'base/upload_pdf.html')
+
+def view_pdf(request):
+    return render(request, 'base/view_pdfs.html')
+

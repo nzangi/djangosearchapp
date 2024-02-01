@@ -1,6 +1,8 @@
 from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect
 from .forms import SignUpForm,SignInForm
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
 
 
@@ -21,25 +23,15 @@ def signup(request):
 
 def signin(request):
     if request.method == "POST":
-        print("if started working on form")
         form = SignInForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
-            print(username)
-            print(password)
             if user is not None:
                 login(request, user)
                 return redirect('/')
-            else:
-                return render(request,
-                              'users/signin.html',
-                              {'form': form, 'error_message': 'Invalid username or password'})
-        else:
-            print("The form is not Valid")
-            print(form.errors)
-            # return render(request, 'users/signin.html', {'form': form, 'form_errors': form.errors})
+            
     else:
         form = SignInForm()
 
@@ -48,7 +40,9 @@ def signin(request):
     })
 
 
+# @login_required
+# def logout_view(request):
+#     logout(request)
+#     render(request,'users/logout.html')
 
-
-def logout_view(request):
-    logout(request)
+#     return HttpResponseRedirect(("users:login"))

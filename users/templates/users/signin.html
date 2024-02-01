@@ -20,20 +20,14 @@
                     </div>
 
                     <p>You want to sign up,<a href="#"> Click here!</a></p>
-                    {% if form.errors %}
+                    {% if form.errors or form.non_field_errors %}
                         <div class="error_form">
-                            <strong>Error(s):</strong>
-                            <ul>
-                                {% for error in form.username.errors %}
-                                    <li>Username: {{ error }}</li>
-                                {% endfor %}
-                                {% for error in form.password.errors %}
-                                    <li>Password: {{ error }}</li>
-                                {% endfor %}
-                            </ul>
+                            {% for field in form.visible_fields %}
+                                {{ field.errors }}
+                            {% endfor %}
+                            {{ form.non_field_errors }}
                         </div>
                     {% endif %}
-
                 </div>
                 <div class="button-sign-up">
                     <button>Sign In</button>

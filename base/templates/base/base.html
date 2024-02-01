@@ -14,7 +14,7 @@
     <div class="navbar-lists">
         {% if user.is_authenticated %}
             <a class="navbar-a" href="{% url 'base:upload_pdf' %}">Upload PDFs</a>
-            <a class="navbar-a" href="#">View All PDFs</a>
+            <a class="navbar-a" href="{% url 'base:view_pdf' %}">View All PDFs</a>
             <a class="navbar-a" href="#">Update PDF</a>
             <a class="navbar-a" href="{% url 'users:logout' %}">Sign Out</a>
 

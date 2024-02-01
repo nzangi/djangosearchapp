@@ -2,5 +2,10 @@
 {% block title %}Sign Out{% endblock title %}
 
 {% block content %}
-        <h2>You have been Signed Out</h2>
+        <h1>Log out</h1>
+        <p>Are you sure you want to log out?</p>
+        <form action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+        </form>
 {% endblock %}

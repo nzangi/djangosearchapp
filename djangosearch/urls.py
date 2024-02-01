@@ -21,10 +21,11 @@ from django.urls import path,include
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='base/base.html'), name='home'),
-    path('base/', include('base.urls')),
     path('admin/', admin.site.urls),
+    path('base/', include('base.urls')),
     path('users/', include('users.urls')),
+    path("", TemplateView.as_view(template_name="base/base.html"), name="base"),  # new
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
