@@ -9,7 +9,8 @@
         <form class="form" action="." method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <label>Choose a PDF</label><br>
-            <input type="file" id="file" name="file" accept=".pdf">
+            {{form.pdf_file}}
+            {% comment %} <input type="file" id="file" name="file" accept=".pdf"> {% endcomment %}
             <button class="button">Upload PDF</button>
         </form>
     </div>
