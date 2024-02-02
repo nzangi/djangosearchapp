@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 class UploadFileModel(models.Model):
     pdf_file=models.FileField(upload_to='media/')
     pdf_user = models.ForeignKey(User,on_delete=models.CASCADE)
+    # db table.
+
     class Meta:
             db_table = "uploadfiles"
 
