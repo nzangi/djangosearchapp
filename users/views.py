@@ -40,9 +40,10 @@ def signin(request):
     })
 
 
-# @login_required
-# def logout_view(request):
-#     logout(request)
-#     render(request,'users/logout.html')
-
-#     return HttpResponseRedirect(("users:login"))
+@login_required
+def logout(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('users:signin')
+    else:
+        return render(request,'users/logout.html')

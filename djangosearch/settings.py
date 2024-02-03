@@ -128,6 +128,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'users/signin'
-LOGIN_REDIRECT_URL = 'base/view_pdf'
-LOGOUT_REDIRECT_URL = 'users/signin'
+# LOGIN_REDIRECT_URL = 'base/view_pdf'
+# LOGOUT_REDIRECT_URL = 'users/signin'
 

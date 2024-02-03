@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import UploadFileForm
+from django.urls import reverse
 
 
 # Create your views here.
@@ -12,7 +13,9 @@ def upload_pdf(request):
     if request.method=="POST":
         form = UploadFileForm(request.POST,request.FILES)
         if form.is_valid():
+            form.instance.pdf_user=request.user
             form.save()
+            return redirect(reverse('base:view_pdf'))
         else:
             form = UploadFileForm()
     else:
