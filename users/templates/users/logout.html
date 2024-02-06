@@ -2,14 +2,11 @@
 {% block title %}Sign Out{% endblock title %}
 
 {% block content %}
-        <div class="container">
                 <h1>Sign Out</h1>
                 <p>Are you sure you want to log out?</p>
                 <form action="{% url 'users:logout' %}" method="post">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Sign Out</button>
-                        <button type="submit" class="btn btn-primary">Cancel</button>
                 </form>
-        </div>
-        
+                <button type="submit" class="btn btn-primary">Cancel</button>        
 {% endblock %}

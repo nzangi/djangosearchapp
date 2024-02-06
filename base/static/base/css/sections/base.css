@@ -6,74 +6,69 @@
 body{
     font-family: 'Poppins', sans-serif;
 }
+.container-fluid{
+    padding: 10px;
+}
 .navbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background: black;
-    padding: 20px 10px;
+    background-image: linear-gradient(to right ,#a517ba,#5f1782);
+    padding: 0 !important;
 }
-.navbar h1{
-    font-size: 20px;
-    font-weight: bold;
-    color: lawngreen;
-    margin-left: 50px;
+
+.navbar-brand{
     text-transform: uppercase;
-    width: 30%;
+    margin-left: 40px;
+    color: #fff;
+    font-weight: 600;
 }
-.navbar-lists{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 5px 5px;
-    width: 70%;
-    transition: 2s;
+.navbar-nav li{
+    padding: 0 10px;
 
 }
-.navbar-a{
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
+
+.navbar-nav  li a{
+    color: #fff !important;
+    font-weight: 600;
+    float: right;
+    text-align: left;
+    text-transform: uppercase;
 }
-.navbar-a:hover{
-    background: white;
-    color: black;
-    border-radius: 5px;
-    font-size: 25px;
-    transition: 2s;
-}
+
 .main{
-    min-height: 75vh;
-    background: #ddb90a;
+    min-height: 90vh;
 }
-.footer{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 10px;
-    background: #9c3705;
+
+#footer{
+    background-image: linear-gradient(to right ,#a517ba,#5f1782);
+    color: #fff;
+
 }
-.footer h1 {
-    font-size: 20px;
-    font-weight: bold;
-    color: aliceblue;
-    margin-left: 50px;
-    width: 30%;
-    text-transform: uppercase;
+.footer-box{
+    padding: 20px;
 }
-.ul-footer{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 5px 5px;
-    width: 70%;
+
+.footer-box .fa-solid{
+    margin-right: 8px;
+    font-size: 25px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    padding-top: 7px;
+    border-radius: 2px;
+    background-image: linear-gradient(to right ,#a517ba,#5f1782);
 }
-.a-footer{
-    font-size: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    color: #0f0101;
-    text-transform: uppercase;
+
+.footer-box .form-control{
+    box-shadow: none !important;
+    border: none;
+    border-radius: 0;
+    margin-top: 25px;
+    max-width: 250px;
+}
+
+.footer-box .btn-primary{
+    box-shadow: none !important;
+    border: none;
+    border-radius: 0;
+    margin-top: 25px;
+    background-image: linear-gradient(to right ,#a517ba,#5f1782);
 }

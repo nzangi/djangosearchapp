@@ -1,50 +1,91 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
     <script src="https://kit.fontawesome.com/5ab6ea2e2a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/base.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/base.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">PDF Search Project</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'base:upload_pdf' %}">Upload PDFs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'base:view_pdf' %}">View All PDFs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Update PDF</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:logout' %}">Sign Out</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:signin' %}">Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:signup' %}">Sign Up</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-</head>
-<body>
-<navbar class="navbar">
-    <h1>PDF Search Project</h1>
-    <div class="navbar-lists">
-        {% if user.is_authenticated %}
-            <a class="navbar-a" href="{% url 'base:upload_pdf' %}">Upload PDFs</a>
-            <a class="navbar-a" href="{% url 'base:view_pdf' %}">View All PDFs</a>
-            <a class="navbar-a" href="#">Update PDF</a>
-            <a class="navbar-a" href="{% url 'users:logout' %}">Sign Out</a>
+    <main class="main">
+      {% block content %}
 
-        {% else %}
-            <a class="navbar-a" href="{% url 'users:signin' %}">Sign In</a>
-            <a class="navbar-a" href="{% url 'users:signup' %}">Sign Up</a>
-        {% endif %}
+      {% endblock %}
+    </main>
 
-    </div>
-</navbar>
-<main class="main">
-    {% block content %}
-    {% endblock content %}
-</main>
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-box">
+            <a class="navbar-brand" href="#">PDF Search Project</a>
+            <p>Welcome to PDF Search project which helps to search word in a PDF Document</p>
+          </div>
+          <div class="col-md-4 footer-box">
+            <p>
+              <b>CONTACT US</b>
+            </p>
+            <p>
+              <i class="fa-solid fa-location-dot"></i> Westelands, Nairobi Kenya!
+            </p>
+            <p>
+              <i class="fa-solid fa-phone"></i> +254700998877
+            </p>
+            <p>
+              <i class="fa-solid fa-envelope"></i> mnpcompany@gmail.com
+            </p>
+          </div>
+          <div class="col-md-4 footer-box">
+            <p>
+              <b>SUBSCRIBE NEWSLETTER</b>
+            </p>
+            <input type="email" class="form-control" placeholder="Your E-Mail" />
+            <button type="button" class="btn btn-primary">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer class="footer">
-    <h1>Search PDF Project</h1>
-    <ul class="ul-footer">
-        <a  class="a-footer" href="#">Home</a>
-        <a class="a-footer" href="#">About</a>
-        <a class="a-footer" href="#">Projects</a>
-        <a class="a-footer" href="#">Contact Us</a>
-        <a class="a-footer" href="#">Location</a>
-        <a class="a-footer" href="#">More!</a>
-
-    </ul>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  </body>
 </html>
