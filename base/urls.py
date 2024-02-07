@@ -5,5 +5,6 @@ app_name = 'base'
 urlpatterns = [
     path('upload_pdf/', views.upload_pdf, name='upload_pdf'),
     path('view_pdf/', views.view_pdf, name='view_pdf'),
+    # path('pdf_view/<int:pdf_id>/', views.pdf_view, name='pdf_view'),
 
 ]
