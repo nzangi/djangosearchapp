@@ -39,7 +39,15 @@ def upload_pdf(request):
 
 def view_pdf(request):
     uploaded_pdfs = UploadFileModel.objects.all()
+    print(uploaded_pdfs)
     return render(request, 'base/view_pdfs.html',{
         'uploaded_pdfs':uploaded_pdfs,
     })
+
+def view_pdf_at_time(request,pk):
+    pdf = UploadFileModel.objects.get(pk=pk)
+    return render(request,'base/view_pdf_at_time.html',{
+        'pdf':pdf,
+    })
+
 

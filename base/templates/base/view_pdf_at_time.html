@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+  View Document
+{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/view_pdf.css' %}" />
+  <div class="view-pdf">
+    <div class="container">
+          <iframe class="iframe mb-4 me-4" src="{{pdf_file.url.pk }}" type="application/pdf"></iframe>
+    </div>
+  </div>
+{% endblock %}

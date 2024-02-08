@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container mt-4">
-    {% for uploaded_pdf in uploaded_pdfs %}
-      <div class="card">
-        <div class="card-body">
-          <img src="{{ uploaded_pdf.file.url }}" type="application/pdf" width="100%" height="500px" />
-        </div>
+  <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/view_pdf.css' %}" />
+  <div class="view-pdf bg-dark">
+    <div class="container">
+      <div class="d-sm-flex flex-wrap">
+        {% for uploaded_pdf in uploaded_pdfs %}
+          <a href="{% url 'base:view_pdf_at_time' uploaded_pdf.id %}">
+            <iframe class="iframe mb-4 me-4" src="{{ uploaded_pdf.pdf_file.url }}" type="application/pdf"></iframe>
+          </a>
+        {% endfor %}
       </div>
-    {% endfor %}
+
+    </div>
   </div>
 {% endblock %}
