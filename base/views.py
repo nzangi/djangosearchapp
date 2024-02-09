@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .forms import UploadFileForm
 from django.urls import reverse
 from .models import UploadFileModel
@@ -39,7 +39,7 @@ def upload_pdf(request):
 
 def view_pdf(request):
     uploaded_pdfs = UploadFileModel.objects.all()
-    print(uploaded_pdfs)
+    # print(uploaded_pdfs)
     return render(request, 'base/view_pdfs.html',{
         'uploaded_pdfs':uploaded_pdfs,
     })
@@ -49,5 +49,22 @@ def view_pdf_at_time(request,pk):
     return render(request,'base/view_pdf_at_time.html',{
         'pdf':pdf,
     })
+def update_pdf(request,pk):
+    # if request.method=="POST":
+    pdf_to_update = get_object_or_404(UploadFileModel,pk=pk,pdf_user=request.user)
+    if request.method=="POST":
+        form = UploadFileForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('base:view_pdf',pk=pdf_to_update.id)
+    else:
+        form = UploadFileForm(instance=pdf_to_update)
+    return render(request,'base/update_pdf.html',{
+        'form':form,
+    })
+
+
+
+
 
 

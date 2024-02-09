@@ -1,14 +1,20 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block title %}
-  View Document
+  View PDF
 {% endblock %}
 
 {% block content %}
-  <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/view_pdf.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/view_pdf_at_time.css' %}" />
   <div class="view-pdf">
     <div class="container">
-          <iframe class="iframe mb-4 me-4" src="{{pdf_file.url.pk }}" type="application/pdf"></iframe>
+        <div class="display">
+          <iframe class="display-pdf" src="{{pdf.pdf_file.url}}" type="application/pdf"></iframe>
+        </div>
+        <div class="d-flex justify-content-between">
+          <a class="btn btn-danger mb-5" href="#">Delete</a>
+          <a class="btn btn-primary mb-5" href="{% url 'base:update' pdf_to_update.pk %}">Update</a>
+        </div>
     </div>
   </div>
 {% endblock %}

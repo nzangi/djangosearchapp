@@ -3,7 +3,13 @@
     min-height: 95vh;
 }
 
-.iframe{
-    height: 200px;
+.a-tag{
+    height: 300px;
     width: 47%;
+}
+
+.iframe{
+    height: 90%;
+    width: 90%;
+    display: block;
 }

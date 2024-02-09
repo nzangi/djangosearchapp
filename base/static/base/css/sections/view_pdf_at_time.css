@@ -1,0 +1,21 @@
+
+.display{
+    height: 600px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.display-pdf{
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+.btn{
+    text-transform: uppercase;
+    font-weight: 600;
+}
