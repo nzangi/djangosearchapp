@@ -45,23 +45,40 @@ def view_pdf(request):
     })
 
 def view_pdf_at_time(request,pk):
-    pdf = UploadFileModel.objects.get(pk=pk)
+    pdf = UploadFileModel.objects.get(pk=pk,pdf_user=request.user)
+
     return render(request,'base/view_pdf_at_time.html',{
         'pdf':pdf,
     })
+
+@login_required
 def update_pdf(request,pk):
     # if request.method=="POST":
     pdf_to_update = get_object_or_404(UploadFileModel,pk=pk,pdf_user=request.user)
     if request.method=="POST":
-        form = UploadFileForm(request.POST,request.FILES)
+        form = UploadFileForm(request.POST,request.FILES,instance=pdf_to_update)
         if form.is_valid():
+            # form.instance.pdf_user=request.user
             form.save()
-            return redirect('base:view_pdf',pk=pdf_to_update.id)
+            return redirect('base:view_pdf_at_time',pk=pdf_to_update.id)
     else:
         form = UploadFileForm(instance=pdf_to_update)
     return render(request,'base/update_pdf.html',{
         'form':form,
     })
+
+@login_required
+def delete_pdf(request,pk):
+    pdf_to_delete = get_object_or_404(UploadFileModel,pk=pk,pdf_user=request.user)
+    if request.method == 'POST':
+        print("Method Post")
+        pdf_to_delete.delete()
+        print("Item deleted")
+        return redirect('base:view_pdf')
+
+    return render(request,'base/delete_pdf.html',{
+            'pdf_to_delete':pdf_to_delete,
+        })
 
 
 

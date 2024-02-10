@@ -7,6 +7,7 @@ urlpatterns = [
     path('upload_pdf/', views.upload_pdf, name='upload_pdf'),
     path('view_pdf/', views.view_pdf, name='view_pdf'),
     path('view_pdf/<int:pk>/', views.view_pdf_at_time, name='view_pdf_at_time'),
-    path('update/<int:pk>/', views.view_pdf_at_time, name='update'),
+    path('view_pdf/<int:pk>/update_pdf/', views.update_pdf, name='update_pdf'),
+    path('delete_pdf/<int:pk>/', views.delete_pdf, name='delete_pdf'),
 
 ]
