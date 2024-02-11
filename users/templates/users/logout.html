@@ -1,12 +1,19 @@
 {% extends 'base/base.html' %}
-{% block title %}Sign Out{% endblock title %}
+{% load static %}
+{% block title %}
+  Sign Out
+{% endblock %}
 
 {% block content %}
-                <h1>Sign Out</h1>
-                <p>Are you sure you want to log out?</p>
-                <form action="{% url 'users:logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Sign Out</button>
-                </form>
-                <button type="submit" class="btn btn-primary">Cancel</button>        
+<link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/delete_pdf.css' %}" />
+  <h1 class="text-center mt-4">Sign Out</h1>
+  <form class="form" action="{% url 'users:logout' %}" method="post">
+    {% csrf_token %}
+    <h3 class="mb-4">Are you sure you want to Sign Out?</h3>
+    <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-danger">Sign Out</button>
+        <a type="submit" class="btn btn-primary" href="base:view_pdf">No,Cancel</a>
+    </div>
+    
+  </form>
 {% endblock %}

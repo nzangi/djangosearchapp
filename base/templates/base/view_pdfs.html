@@ -10,7 +10,7 @@
     <div class="container">
       <div class="d-sm-flex flex-wrap">
         {% for uploaded_pdf in uploaded_pdfs %}
-          <a  class="a-tag mb-4 me-4" href="{% url 'base:view_pdf_at_time' uploaded_pdf.pk %}">
+          <a  class="a-tag mb-4 me-4" href="{% url 'base:view_pdf_at_time' uploaded_pdf.id %}">
             <iframe class="iframe" src="{{ uploaded_pdf.pdf_file.url }}" type="application/pdf"></iframe>
           </a>
         {% endfor %}

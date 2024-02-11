@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/upload_pdf.css' %}">
     <div class="container">
         <h1>Upload PDF</h1>
-        <form class="form" action="{{% url 'base:' %}}" method="post" enctype="multipart/form-data">
+        <form class="form" action="{% url 'base:upload_pdf' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <label>Choose a PDF</label><br>
             {{form.pdf_file}}

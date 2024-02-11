@@ -45,8 +45,8 @@ def view_pdf(request):
     })
 
 def view_pdf_at_time(request,pk):
-    pdf = UploadFileModel.objects.get(pk=pk,pdf_user=request.user)
-
+    pdf = UploadFileModel.objects.get(pk=pk)
+    # pdf = get_object_or_404(UploadFileModel,pk=pk,pdf_user=request.user)
     return render(request,'base/view_pdf_at_time.html',{
         'pdf':pdf,
     })
@@ -69,13 +69,19 @@ def update_pdf(request,pk):
 
 @login_required
 def delete_pdf(request,pk):
-    pdf_to_delete = get_object_or_404(UploadFileModel,pk=pk,pdf_user=request.user)
-    if request.method == 'POST':
+    # pdf_to_delete = get_object_or_404(UploadFileModel,pk=pk,pdf_user=request.user)
+    pdf_to_delete = UploadFileModel.objects.get(pk=pk,pdf_user=request.user)
+    print(pdf_to_delete)
+    print("Going To Method Post")
+
+    if request.method =="POST":
         print("Method Post")
         pdf_to_delete.delete()
         print("Item deleted")
         return redirect('base:view_pdf')
-
+    else:
+        print("Could not sent post request!")
+    
     return render(request,'base/delete_pdf.html',{
             'pdf_to_delete':pdf_to_delete,
         })

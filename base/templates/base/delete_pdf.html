@@ -3,14 +3,15 @@
 {% block title %}Delete PDF{% endblock title %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/sections/delete_pdf.css' %}" />
     <div class="container">
-        <h1>Delete PDF</h1>
-        <form class="form" action="." method="post" enctype="multipart/form-data">
+        <h1 class="text-center mt-4">Delete PDF</h1>
+        <form class="form" action="{% url 'base:delete_pdf' pdf_to_delete.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <h1>Are you sure you want to delete PDF?</h1>
+            <h3 class="mb-4">Are you sure you want to delete PDF?</h3>
             <div class="d-flex justify-content-between">
-                <a class="btn btn-danger mb-5">Yes,Delete</a>
-                <a class="btn btn-primary mb-5" href="{% url 'base:view_pdf_at_time' pdf_to_delete.id %}">No,Cancel</a>
+                <button type="submit" class="btn btn-danger mb-5">Yes, Delete </button>
+                <a class="btn btn-primary mb-5" href="{% url 'base:view_pdf_at_time' pdf_to_delete.id %}">No, Cancel</a>
             </div>
             
         </form>
