@@ -87,6 +87,13 @@ def delete_pdf(request,pk):
         })
 
 
+def browser_pdf(request,pk):
+    pdf_to_search_word = UploadFileModel.objects.get(pk=pk)
+
+    return render(request,'base/browser_pdf.html',{
+        'pdf_to_search_word':pdf_to_search_word,
+    })
+
 
 
 

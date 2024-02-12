@@ -14,7 +14,10 @@
           <div class="d-flex justify-content-between">
             {% if request.user == pdf.pdf_user %}
               <a class="btn btn-danger mb-5" href="{% url 'base:delete_pdf' pdf.id %}">Delete</a>
+              <a class="btn btn-success mb-5" href="{% url 'base:browser_pdf' pdf.id %}">Search Word</a>
               <a class="btn btn-primary mb-5" href="{% url 'base:update_pdf' pdf.id %}">Update</a>
+            {% else %}
+              <a class="btn btn-success mb-5" href="{% url 'base:browser_pdf' pdf.id %}">Search Word</a>
             {% endif %}
           </div>
     </div>

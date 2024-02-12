@@ -72,3 +72,8 @@ body{
     margin-top: 25px;
     background-image: linear-gradient(to right ,#a517ba,#5f1782);
 }
+.nav-link p{
+    text-transform: lowercase;
+    font-size: 10px;
+    display: inline;
+}

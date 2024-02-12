@@ -1,6 +1,7 @@
 from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect
 from .forms import SignUpForm,SignInForm
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
@@ -41,9 +42,12 @@ def signin(request):
 
 
 @login_required
-def logout(request):
+def signout(request):
+    # current_user = User.get
+    # print(current_user)
     if request.method == 'POST':
         logout(request)
         return redirect('users:signin')
     else:
         return render(request,'users/logout.html')
+    # return render(request,'users/logout.html')
