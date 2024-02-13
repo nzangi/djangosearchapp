@@ -4,6 +4,9 @@ from .forms import UploadFileForm
 from django.urls import reverse
 from .models import UploadFileModel
 from django.http import FileResponse, Http404
+from PyPDF2 import PdfReader
+import os
+
 
 
 
@@ -89,9 +92,28 @@ def delete_pdf(request,pk):
 
 def browser_pdf(request,pk):
     pdf_to_search_word = UploadFileModel.objects.get(pk=pk)
+    query = request.GET.get('query','')
+    matches = 0
+        # Convert PDF to text
+    file_path = pdf_to_search_word.pdf_file.path
+    print(file_path)
+    if os.path.exists(file_path):
+        with open(file_path,'rb') as file:
+            pdf = PdfReader(file)
+            text=''
+            for page in range(len(pdf.pages)):
+                text += pdf.pages[page].extract_text()
+            if query:
+                matches = text.count(query)
+            # print(matches)
+    else:
+        print(f"File does not exist at {file_path}")
+
 
     return render(request,'base/browser_pdf.html',{
+        'query':query,
         'pdf_to_search_word':pdf_to_search_word,
+        'matches':matches,
     })
 
 
