@@ -10,10 +10,10 @@
     <div class="container mb-4 mt-3">
       <div class="row">
         <div class="col-md-4 bg-success">
-            <form class="form" action="" method="get">
+            <form class="form" id="searchForm" action="" method="get">
                 <div class="form-input d-flex">
-                    <input name="query" class="form-control me-2 m-2" type="search" value="{{query}}" placeholder="Search Word...">
-                    <button class="btn btn-primary m-2" type="submit">Search</button>
+                    <input name="query" id="queryInput" class="form-control me-2 m-2" type="search" value="{{query}}" placeholder="Search Word...">
+                    <button id="searchButton" class="btn btn-primary m-2" type="submit">Search</button>
                 </div>
             </form>
             {% if matches %}
@@ -22,10 +22,30 @@
         </div>
         <div class="col-md-8 bg-dark">
             <div class="display">
-                <iframe class="display-pdf" src="{{pdf_to_search_word.pdf_file.url}}" type="application/pdf"></iframe>
+                {% comment %} <iframe id="pdfViewer" class="display-pdf" src="{{ pdf_to_search_word.pdf_file.url }}" type="application/pdf"></iframe> {% endcomment %}
+                <iframe class="display-pdf" srcdoc="{{ highlighted_content }}" type="text/html"></iframe>
               </div>
         </div>
       </div>
     </div>
   </div>
+  <script>
+      document.addEventListener("DOMContentLoaded",function(){
+        const searchForm = document.getElementById("searchForm")
+        const queryInput = document.getElementById("queryInput")
+        const searchButton = document.getElementById("searchButton")
+
+        const performSearch = function(event){
+          event.preventDefault()
+          if(queryInput.value.trim() !== ''){
+            searchForm.submit()
+          }
+          {% comment %} queryInput.focus() {% endcomment %}
+        }
+        queryInput.addEventListener('input',performSearch)
+        searchForm.addEventListener('submit',function(event){
+          event.preventDefault()
+        })
+      })
+  </script>
 {% endblock %}
