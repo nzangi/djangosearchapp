@@ -72,9 +72,7 @@ def delete_pdf(request,pk):
     print("Going To Method Post")
 
     if request.method =="POST":
-        print("Method Post")
         pdf_to_delete.delete()
-        print("Item deleted")
         return redirect('base:view_pdf')
     else:
         print("Could not sent post request!")
@@ -82,32 +80,6 @@ def delete_pdf(request,pk):
     return render(request,'base/delete_pdf.html',{
             'pdf_to_delete':pdf_to_delete,
         })
-
-
-# def browser_pdf(request,pk):
-#     pdf_to_search_word = UploadFileModel.objects.get(pk=pk)
-#     query = request.GET.get('query','')
-#     matches = 0
-#     # Convert PDF to text
-#     file_path = pdf_to_search_word.pdf_file.path
-#     if os.path.exists(file_path):
-#         with open(file_path,'rb') as file:
-#             pdf = PdfReader(file)
-#             text=''
-#             for page in range(len(pdf.pages)):
-#                 text += pdf.pages[page].extract_text()
-#             if query:
-#                 matches = text.count(query)
-#             # print(matches)
-#     else:
-#         print(f"File does not exist at {file_path}")
-
-
-#     return render(request,'base/browser_pdf.html',{
-#         'query':query,
-#         'pdf_to_search_word':pdf_to_search_word,
-#         'matches':matches,
-#     })
 
 
 def browser_pdf(request,pk):

@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('base/', include('base.urls')),
     path('users/', include('users.urls')),
+    path('inbox/',include('conversation.urls')),
     path("", TemplateView.as_view(template_name="base/base.html"), name="base"),  # new
 
 ]
