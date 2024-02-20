@@ -1,10 +1,31 @@
 {% extends 'base/base.html' %}
 {% load static %}
-{% block title %}Delete PDF{% endblock title %}
+{% block title %}
+  New Conversation
+{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1 class="text-center mt-4">Messages</h1>
-    </div>
+    <link rel="stylesheet" type="text/css" href="{% static 'conversation/css/new.css' %}">
 
-{% endblock content %}
+  <div class="container">
+    <h1 class="text-center mt-4">New Conversation</h1>
+    <form class="form" action="." method="post">
+      {% csrf_token %}
+      <label for="floatingTextarea" class="text-center mb-3">Text Content</label>
+      <div class="form-floating w-100">
+        {% comment %} <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px">{{ form.content }}</textarea> {% endcomment %}
+        {{ form.content }}
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        {% if form.errors or form.non_field_errors %}
+          <div class="text-bg-danger">
+            {% for field in form.visible_fields %}
+              {{ field.errors }}
+            {% endfor %}
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
+      </div>
+      <button class="btn btn-primary mt-3">Send Text</button>
+    </form>
+  </div>
+{% endblock %}

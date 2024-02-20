@@ -19,6 +19,7 @@ def new_conversation(request,pdf_pk):
         form = ConversationMessageForm(request.POST)
 
         if form.is_valid():
+            print(form.cleaned_data['content'])
             conversation = Conversation.objects.create(pdf_file=pdf_file)
             conversation.members.add(request.user)
             conversation.members.add(pdf_file.pdf_user)
@@ -30,10 +31,13 @@ def new_conversation(request,pdf_pk):
             conversation_message.save()
 
             return redirect('base:view_pdf_at_time',pk=pdf_pk)
+        # else:
+        #     print(form.errors)
     else:
         form = ConversationMessageForm()
 
-    return render (request,'conversation/')
+
+    return render (request,'conversation/new.html',{'form':form})
         
 
 
