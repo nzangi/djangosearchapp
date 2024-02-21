@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Inbox
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'conversation/css/inbox.css' %}">
+
+    <div class="container">
+        <h1 class="text-center mt-4">Inbox</h1>
+        <div>
+                {% for  conversation in conversations %}
+                    <a href="#">
+                        <div class="d-sm-flex">
+                            <iframe class="display-pdf me-5" src="{{conversation.pdf_file.url}}" type="application/pdf"></iframe>
+                            <div class="message-body mb-green">
+                                Hello, welcome
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+        </div>
+    </div>
+{% endblock %}

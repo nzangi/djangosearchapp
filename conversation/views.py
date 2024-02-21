@@ -2,9 +2,11 @@ from django.shortcuts import render,get_object_or_404,redirect
 from base.models import UploadFileModel
 from conversation.forms import ConversationMessageForm
 from conversation.models import Conversation
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def new_conversation(request,pdf_pk):
     pdf_file = get_object_or_404(UploadFileModel,pk=pdf_pk)
     if pdf_file.pdf_user == request.user:
@@ -39,7 +41,10 @@ def new_conversation(request,pdf_pk):
 
     return render (request,'conversation/new.html',{'form':form})
         
-
+@login_required
+def inbox(request):
+    conversations  = Conversation.objects.filter(members__in=[request.user.id])
+    return render(request,'conversation/inbox.html',{'conversations':conversations})
 
 
 
