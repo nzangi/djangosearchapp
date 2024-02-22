@@ -11,11 +11,15 @@ Inbox
         <h1 class="text-center mt-4">Inbox</h1>
         <div>
                 {% for  conversation in conversations %}
-                    <a href="#">
-                        <div class="d-sm-flex">
-                            <iframe class="display-pdf me-5" src="{{conversation.pdf_file.url}}" type="application/pdf"></iframe>
-                            <div class="message-body mb-green">
-                                Hello, welcome
+                    <a href="{% url 'conversation:conversation_detail' conversation.id %}">
+                        <div class="d-sm-flex mb-4">
+                            <iframe class="display-pdf me-5" src="{{conversation.pdf_file.pdf_file.url}}" type="application/pdf"></iframe>
+                            <div class="message-body">
+                                {% for member in  conversation.members.all %}
+                                    {% if member != request.user %}
+                                        <p>{{member.username}} || {{conversation.modified_at}}</p>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </a>

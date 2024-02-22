@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+  Message
+{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'conversation/css/new.css' %}" />
+  <div class="container">
+    <h1 class="text-center mt-4">Mesage</h1>
+    {% for message in conversation.messages.all %}
+      <div class="bg-sucess mb-3 mt-3 p-4">
+        <p>Message Created by {{ message.created_by.username }} at {{ message.created_at }}</p>
+        <p>{{ message.content }}</p>
+      </div>
+    {% endfor %}
+    <form class="form" action="." method="post">
+      {% csrf_token %}
+      <div class="form-floating w-100">{{ form.content }}</div>
+      <button class="btn btn-primary mt-3">Send Text</button>
+    </form>
+  </div>
+{% endblock %}
